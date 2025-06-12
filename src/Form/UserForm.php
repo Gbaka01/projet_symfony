@@ -47,7 +47,7 @@ class UserForm extends AbstractType
             'label' => 'role',
             'choices' => [
             'Administrateur' => "ROLE_ADMIN",
-            'Utilisateur' => "ROLE_USER"],
+            'Utilisateur' => "ROLE_VISITEUR"],
             'multiple' => true,
             ])
             ->add('password')
