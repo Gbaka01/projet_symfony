@@ -23,6 +23,9 @@ class Note
     #[ORM\ManyToOne(inversedBy: 'notes')]
     private ?User $user = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $note = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Note
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getNote(): ?int
+    {
+        return $this->note;
+    }
+
+    public function setNote(?int $note): static
+    {
+        $this->note = $note;
 
         return $this;
     }

@@ -4,10 +4,13 @@ namespace App\Form;
 
 use App\Entity\Note;
 use App\Form\NoteForm;
+use App\Entity\Recette;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class NoteForm extends AbstractType
 {
@@ -23,6 +26,11 @@ class NoteForm extends AbstractType
                     'class' => 'form-control'
                 ]
                 ])
+            ->add('note', IntegerType::class)
+            ->add ('recette', EntityType::class, [
+                'class' => Recette::class,
+                'choice_label' => 'description3'
+            ])
         ;
     }
 
