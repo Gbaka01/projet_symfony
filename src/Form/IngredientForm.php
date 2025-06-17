@@ -9,14 +9,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class IngredientForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('description', TextType::class, [
+            ->add('description', TextareaType::class, [
                 'label' => 'description',
                 'label_attr' => [
                     'class' => 'form-label'
@@ -25,13 +25,13 @@ class IngredientForm extends AbstractType
                     'class' => 'form-control'
                 ]
                 ])
-            ->add ('categorie', EntityType::class, [
-                'multiple' => true,
-                'class' => Categorie::class,
+            ->add('categorie', EntityType::class, [
+                'multiple' => false,
                 'choice_label' => 'description2',
                 'expanded' => true,
-            
+                'class' => Categorie::class, 
             ])    
+   
         ;
     }
 

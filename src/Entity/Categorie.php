@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use App\Entity\Recette;
 use App\Entity\Categorie;
+use App\Entity\Ingredient;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\Collection;

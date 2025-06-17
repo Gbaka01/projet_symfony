@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Description</th>
+                <th>Categories</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,6 +19,13 @@
             <tr>
                 <td>{{ ingredient.id }}</td>
                 <td>{{ ingredient.description }}</td>
+                  <td>
+                  <ul>
+                {% for categorie in ingredient.categorie %}
+                     <li>{{ categorie.description2 }}</li>
+                {% endfor %}
+                 </ul>  
+                  </td>
                 <td>
                     <a href="{{ path('app_ingredient_show', {'id': ingredient.id}) }}">show</a>
                     <a href="{{ path('app_ingredient_edit', {'id': ingredient.id}) }}">edit</a>
