@@ -29,7 +29,8 @@ class NoteForm extends AbstractType
             ->add('note', IntegerType::class)
             ->add ('recette', EntityType::class, [
                 'class' => Recette::class,
-                'choice_label' => 'description3'
+                'choice_label' => 'fiche',
+            
             ])
         ;
     }

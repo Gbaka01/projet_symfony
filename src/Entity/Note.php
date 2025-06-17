@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Note;
+use App\Entity\Recette;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\NoteRepository;
 

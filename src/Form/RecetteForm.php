@@ -3,9 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Recette;
+use App\Entity\Categorie;
 use App\Form\RecetteForm;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -39,6 +41,12 @@ class RecetteForm extends AbstractType
                 'mapped' => false,
                 'required' => false,
                     ])
+            ->add('categories', EntityType::class, [
+                'multiple' => true,
+                'choice_label' => 'description2',
+                'expanded' => true,
+                'class' => Categorie::class,
+            ])        
         ;
     }
 

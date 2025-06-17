@@ -11,6 +11,9 @@
                 <th>Id</th>
                 <th>Description3</th>
                 <th>Fiche</th>
+                <th>Notes</th>
+                <th>Avis</th>
+                <th>Categories</th>
                 <th>Avatar</th>
                 <th>actions</th>
             </tr>
@@ -21,6 +24,27 @@
                 <td>{{ recette.id }}</td>
                 <td>{{ recette.description3 }}</td>
                 <td>{{ recette.fiche }}</td>
+                <td>
+                    <ul>
+                        {% for note in recette.notes %}
+                        <li>{{ note.note }} / 5</li>
+                        {% endfor %}
+                    </ul>
+</td>
+                <td>
+                    <ul>
+                        {% for note in recette.notes %}
+                        <li>{{ note.description1 }}</li>
+                        {% endfor %}
+                    </ul>
+</td>
+          <td> 
+             <ul>
+                {% for categorie in recette.categories %}
+                <li>{{ categorie.description2 }}</li>
+                {% endfor %}
+             </ul>
+          </td>
                 <td>{{ recette.avatar }}</td>
                 <td>
                     <a href="{{ path('app_recette_show', {'id': recette.id}) }}">show</a>
