@@ -47,10 +47,12 @@
           </td>
                 <td>{{ recette.avatar }}</td>
                 <td>
-                {% if is_granted('ROLE_ADMIN') %}
+              
                     <a href="{{ path('app_recette_show', {'id': recette.id}) }}">show</a>
-                    {% endif %}
+                   
+                      {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('app_recette_edit', {'id': recette.id}) }}">edit</a>
+                 {% endif %}
                 </td>
             </tr>
         {% else %}
