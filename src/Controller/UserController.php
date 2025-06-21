@@ -24,13 +24,7 @@ final class UserController extends AbstractController
             'users' => $userRepository->findAll(),
         ]);
     }
-        #[Route('/byrecette/{description3}', name: 'app_user_byrecette', methods: ['GET'])]
-    public function index_by_name(String $description3, UserRepository $userRepository){
-        $users =  $userRepository->findByName($description3);
-        return $this->render('user/index.html.twig', [
-            'users' => $users,
-        ]);
-    }
+
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

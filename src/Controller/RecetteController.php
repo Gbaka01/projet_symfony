@@ -22,6 +22,13 @@ final class RecetteController extends AbstractController
             'recettes' => $recetteRepository->findAll(),
         ]);
     }
+    #[Route('/byrecette/{fiche}', name: 'app_byname_byrecette', methods: ['GET'])]
+    public function index_by_name(String $fiche, RecetteRepository $recetteRepository){
+        $recettes =  $recetteRepository->findByName($fiche);
+        return $this->render('recette/index.html.twig', [
+           'recettes' => $recettes,
+        ]);
+    }
 
     #[Route('/new', name: 'app_recette_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

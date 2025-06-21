@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Recette;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Repository\RecetteRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Recette>
@@ -15,6 +16,20 @@ class RecetteRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Recette::class);
     }
+         /**
+        * @return Recette[] Returns an array of Recette objects
+        */
+       public function findByName(string $val): array
+       {
+           return $this->createQueryBuilder('u')
+              ->andWhere('u.fiche LIKE :val')
+               ->setParameter('val', '%' .$val. '%')
+               ->orderBy('u.id', 'ASC')
+               ->setMaxResults(10)
+               ->getQuery()
+               ->getResult()
+           ;
+       }
 
     //    /**
     //     * @return Recette[] Returns an array of Recette objects

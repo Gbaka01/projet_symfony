@@ -15,7 +15,7 @@ export default class extends Controller {
 let form = document.getElementById("formulaire")
 input.addEventListener ('input', handleChange);
 function handleChange(){
-form.setAttribute('action', '/user/byrecette/'+input.value);
+form.setAttribute('action', '/recette/byrecette/'+input.value);
 }
     }
 }

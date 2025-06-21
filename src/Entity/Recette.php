@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Recette;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\RecetteRepository;
 use Doctrine\Common\Collections\Collection;
@@ -44,6 +45,9 @@ class Recette
 
     #[ORM\ManyToOne(inversedBy: 'recettes')]
     private ?User $user = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description4 = null;
 
     public function __construct()
     {
@@ -157,6 +161,18 @@ class Recette
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDescription4(): ?string
+    {
+        return $this->description4;
+    }
+
+    public function setDescription4(?string $description4): static
+    {
+        $this->description4 = $description4;
 
         return $this;
     }

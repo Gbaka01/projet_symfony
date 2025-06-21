@@ -18,8 +18,8 @@ class RecetteForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('description3', TextareaType::class, [
-                'label' => 'description3',
+            ->add('description4', TextareaType::class, [
+                'label' => 'description4',
                 'label_attr' => [
                     'class' => 'form-label'
                 ],
