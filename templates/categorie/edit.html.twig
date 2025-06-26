@@ -4,10 +4,10 @@
 
 {% block body %}
     <h1>Edit Categorie</h1>
-
     {{ include('categorie/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('app_categorie_index') }}">back to list</a>
-
+{% if is_granted('ROLE_ADMIN') %}
     {{ include('categorie/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}
