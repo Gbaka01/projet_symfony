@@ -22,7 +22,7 @@ class RecetteRepository extends ServiceEntityRepository
        public function findByName(string $val): array
        {
            return $this->createQueryBuilder('u')
-              ->andWhere('u.fiche LIKE :val')
+               ->andWhere('u.fiche LIKE : val')
                ->setParameter('val', '%' .$val. '%')
                ->orderBy('u.id', 'ASC')
                ->setMaxResults(10)
