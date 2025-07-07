@@ -26,7 +26,7 @@ class IngredientForm extends AbstractType
                 ]
                 ])
             ->add('categorie', EntityType::class, [
-                'multiple' => true,
+                'multiple' => false,
                 'choice_label' => 'description2',
                 'expanded' => true,
                 'class' => Categorie::class, 
