@@ -19,7 +19,7 @@ class RecetteRepository extends ServiceEntityRepository
          /**
         * @return Recette[] Returns an array of Recette objects
         */
-       public function findByName(string $val): array
+       public function findByName($fiche): array
        {
            return $this->createQueryBuilder('u')
                ->andWhere('u.fiche LIKE : val')

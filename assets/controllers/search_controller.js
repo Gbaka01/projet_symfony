@@ -14,8 +14,10 @@ export default class extends Controller {
         let input = document.getElementById("search");
 let form = document.getElementById("formulaire")
 input.addEventListener ('input', handleChange);
-function handleChange(){
-form.setAttribute('action', '/recette/byrecette/'+input.value);
+function handleChange(e){
+    console.log(form)
+    e.preventDefault()
+form.setAttribute( '/recette/byrecette/'+ input.value);
 }
     }
 }
