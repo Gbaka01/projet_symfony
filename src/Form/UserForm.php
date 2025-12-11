@@ -50,7 +50,6 @@ class UserForm extends AbstractType
             'Utilisateur' => "ROLE_VISITEUR"],
             'multiple' => true,
             ])
-            ->add('password')
      
      
         ;
