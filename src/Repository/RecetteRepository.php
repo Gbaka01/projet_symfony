@@ -19,17 +19,23 @@ class RecetteRepository extends ServiceEntityRepository
          /**
         * @return Recette[] Returns an array of Recette objects
         */
-       public function findByName($fiche): array
-       {
-           return $this->createQueryBuilder('u')
-               ->andWhere('u.fiche LIKE : val')
-               ->setParameter('val', '%' .$val. '%')
-               ->orderBy('u.id', 'ASC')
-               ->setMaxResults(10)
-               ->getQuery()
-               ->getResult()
-           ;
-       }
+// src/Repository/RecetteRepository.php
+
+public function findByName(?string $fiche): array
+{
+    $qb = $this->createQueryBuilder('r');
+
+    if ($fiche) {
+        $qb->andWhere('r.nom LIKE :fiche')
+           ->setParameter('fiche', '%' . $fiche . '%');
+    }
+
+    return $qb->orderBy('r.id', 'DESC')
+              ->getQuery()
+              ->getResult();
+}
+
+
 
     //    /**
     //     * @return Recette[] Returns an array of Recette objects

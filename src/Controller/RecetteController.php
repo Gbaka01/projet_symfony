@@ -16,21 +16,19 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/recette')]
 final class RecetteController extends AbstractController
 {
-    // 📌 LISTE DES RECETTES
+    // 📌 LISTE + FILTRE
     #[Route('', name: 'app_recette_index', methods: ['GET'])]
-    public function index(RecetteRepository $recetteRepository): Response
-    {
-        return $this->render('recette/index.html.twig', [
-            'recettes' => $recetteRepository->findAll(),
-        ]);
-    }
+    public function index(
+        Request $request,
+        RecetteRepository $recetteRepository
+    ): Response {
+        $fiche = $request->query->get('fiche');
 
-    // 📌 FILTRER PAR NOM
-    #[Route('/byrecette/{fiche}', name: 'app_byname_byrecette', methods: ['GET'])]
-    public function indexByName(string $fiche, RecetteRepository $recetteRepository): Response
-    {
+        $recettes = $recetteRepository->findByName($fiche);
+
         return $this->render('recette/index.html.twig', [
-            'recettes' => $recetteRepository->findByName($fiche),
+            'recettes' => $recettes,
+            'fiche' => $fiche,
         ]);
     }
 
@@ -64,7 +62,7 @@ final class RecetteController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    throw new \Exception("Erreur lors de l'upload de l'image");
+                    throw new \RuntimeException("Erreur lors de l'upload de l'image");
                 }
 
                 $recette->setAvatar1($newFilename);
@@ -78,7 +76,7 @@ final class RecetteController extends AbstractController
 
         return $this->render('recette/new.html.twig', [
             'recette' => $recette,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -109,7 +107,7 @@ final class RecetteController extends AbstractController
 
         return $this->render('recette/edit.html.twig', [
             'recette' => $recette,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -131,5 +129,6 @@ final class RecetteController extends AbstractController
         return $this->redirectToRoute('app_recette_index');
     }
 }
+
 
     
