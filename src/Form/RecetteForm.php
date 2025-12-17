@@ -36,8 +36,8 @@ class RecetteForm extends AbstractType
                     'class' => 'form-control'
                 ]
                 ])
-            ->add('avatar', FileType::class, [
-                'label' => 'avatar',
+            ->add('avatar1', FileType::class, [
+                'label' => 'avatar1',
                 'mapped' => false,
                 'required' => false,
                     ])

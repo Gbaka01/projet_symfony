@@ -26,7 +26,7 @@ class UserForm extends AbstractType
                 ]
                 ])
             ->add('prenom', TextType::class, [
-                'label' => 'Nom',
+                'label' => 'prenom',
                 'label_attr' => [
                     'class' => 'form-label'
                 ],
@@ -35,7 +35,7 @@ class UserForm extends AbstractType
                 ]
                 ])    
             ->add('email', EmailType::class, [
-                'label' => 'Nom',
+                'label' => 'email',
                 'label_attr' => [
                     'class' => 'form-label'
                 ],
